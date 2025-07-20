@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Practice Tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h2 {
+      color: #333;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Practice Tasks</h1>
+
+  <h2>1. Join Array Elements into a String</h2>
+  <pre id="join-output"></pre>
+
+  <h2>2. Most Frequent Item in Array</h2>
+  <pre id="freq-output"></pre>
+
+  <h2>3. Truncate String</h2>
+  <pre id="truncate-output"></pre>
+
+  <h2>4. Capitalize First Letter of Each Word</h2>
+  <pre id="capitalize-output"></pre>
+
+  <h2>5. Filter Array Between Two Values</h2>
+  <pre id="between-output"></pre>
+
+  <script>
+    // Task 1: Join elements
+    let myColor = ["Red", "Green", "White", "Black"];
+    let joinResult = [
+      myColor.join(","),
+      myColor.toString(),
+      myColor.join("+")
+    ].join("\n");
+
+    document.getElementById("join-output").textContent = joinResult;
+
+    // Task 2: Most frequent item
+    let arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+    let freq = {};
+    let maxCount = 0;
+    let maxItem = null;
+
+    for (let i = 0; i < arr1.length; i++) {
+      let item = arr1[i];
+      freq[item] = (freq[item] || 0) + 1;
+      if (freq[item] > maxCount) {
+        maxCount = freq[item];
+        maxItem = item;
+      }
+    }
+
+    document.getElementById("freq-output").textContent = `${maxItem} ( ${maxCount} times )`;
+
+    // Task 3: Truncate string
+    function truncateString(str, num) {
+      return str.slice(0, num);
+    }
+    document.getElementById("truncate-output").textContent = truncateString("Robin Singh", 4); // "Robi"
+
+    // Task 4: Capitalize words
+    function capitalizeWords(str) {
+      return str
+        .split(" ")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+    }
+    document.getElementById("capitalize-output").textContent = capitalizeWords('js string exercises');
+
+    // Task 5: Filter between values
+    function arrBetween(min, max, arr) {
+      return arr.filter(n => n > min && n < max);
+    }
+    document.getElementById("between-output").textContent =
+      JSON.stringify(arrBetween(3, 8, [1, 5, 95, 0, 4, 7])); // [5,4,7]
+  </script>
+
+</body>
+</html>
